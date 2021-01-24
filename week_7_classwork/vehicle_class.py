@@ -25,12 +25,14 @@ class CVehicle():
 
     @property
     def price(self):
-        return self.__price
+        return self.price
 
     @price.setter
     def price(self, value):
-        if 100<value<100000:
-            self.__price = float(value)
-        else: self.__price = None
+          self.__price = value
+
+
     def __str__(self):
+        return f"{self.year}, {self.price}, {self.speed}"
+    def __repr__(self):
         return f"{self.year}, {self.price}, {self.speed}"
