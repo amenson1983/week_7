@@ -39,7 +39,7 @@ class CPlane:
 
 # 1. +вывести на екран механизм с наибольшей ценой
 # 2. +получить механизм с наименьшей ценой
-# 3. получить механизм с ценой меньше 16000
+# 3. +получить механизм с ценой меньше 16000
 # после 2000 года
 # 4. получить масив механизмов год
 # выпуска с 2000 по 2010
@@ -74,8 +74,11 @@ class Vehicles:
             if i.price < less_price and i.year >= after_year:
                 return i
 
-    def get_vehicles_in_range(self, start_year=2000, end_year=2010):
-        pass
+    def get_vehicles_in_range(self, start_year=2000, end_year=2010,list_=[]):
+        for i in self.vehicles_:
+            if i.year <= end_year and i.year >= start_year:
+                list_.append(i)
+        return list_
 
     def get_vehicles_less_with_aver_price_and_speed_in_range(self,age_year=5,start_speed=100, end_speed=200):
         pass
@@ -139,3 +142,5 @@ if __name__ == '__main__':
     Test_Vehicle().test_price_less_after_vehicle()
     print(vehs_)
 
+    list_range = vehicles_.get_vehicles_in_range()
+    print(list_range)
