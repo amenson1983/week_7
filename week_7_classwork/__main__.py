@@ -37,9 +37,9 @@ class CPlane:
     def __repr__(self):
         return f"{CVehicle.__str__(self)}, {self.height}, {self.passangers}"
 
-# 1. вывести на екран механизм с наибольшей ценой
-# 2. получить механизм с наименьшей ценой
-# 3. получить механизм с ценой меньше 10000
+# 1. +вывести на екран механизм с наибольшей ценой
+# 2. +получить механизм с наименьшей ценой
+# 3. получить механизм с ценой меньше 16000
 # после 2000 года
 # 4. получить масив механизмов год
 # выпуска с 2000 по 2010
@@ -69,8 +69,11 @@ class Vehicles:
                 min_ = i.price
         return min_.price
 
-    def get_price_less_after_vehicle(self, less_price=10000, after_year=2000):
-        pass
+    def get_price_less_after_vehicle(self, less_price=16000, after_year=1999,min_ = []):
+        for i in self.vehicles_:
+            if i.price < less_price and i.year > after_year:
+                min_.append(i)
+        return min_
 
     def get_vehicles_in_range(self, start_year=2000, end_year=2010):
         pass
@@ -85,7 +88,7 @@ class Test_Vehicle:
             [CCar(10000, 150, 1995),
              CShip(500000, 70, 2008, 'Odessa', 1050),
              CPlane(1000000, 960, 2020, 200, 10000),
-             CCar(15000, 220, 2000),
+             CCar(15000, 220, 2001),
              CShip(600000, 80, 2019, 'Chernomorsk', 1200),
              CPlane(800000, 780, 2015, 150, 10000),
              ]
@@ -97,6 +100,7 @@ class Test_Vehicle:
         else:
             print("Error")
 
+
 if __name__ == '__main__':
 
     car1 = CCar(10000, 150, 1995)
@@ -107,9 +111,12 @@ if __name__ == '__main__':
     plane2 = CPlane(800000, 780, 2015, 150, 10000)
 
     vehicles = [car1,ship1,plane1,car2,ship2,plane2]
-
     vehicles_ = Vehicles(vehicles)
+
     min_ = vehicles_.get_minprice_vehicle()
     print(min_)
     Test_Vehicle().test_get_minprice_vehicle()
+
     vehicles_.print_maxprice_vehicle()
+    vehs_ = vehicles_.get_price_less_after_vehicle()
+    print(vehs_)
