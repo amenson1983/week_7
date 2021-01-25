@@ -95,6 +95,16 @@ class Vehicles:
                 list_.append(vehicle)
         return list_
 
+    def get_cars_and_planes_quantity(self):
+        cars_count = 0
+        planes_count = 0
+        for vehicle in self.vehicles_:
+            if isinstance(vehicle,CCar):
+                cars_count += 1
+            elif isinstance(vehicle,CPlane):
+                planes_count += 1
+        return cars_count, planes_count
+
 
 
 class Test_Vehicle:
@@ -163,3 +173,6 @@ if __name__ == '__main__':
     list_range_year_speed = vehicles_.get_vehicles_less_with_aver_price_and_speed_in_range()
     for i in list_range_year_speed:
         print('Vehicles younger than 5 years, \nin price range +-20% from average \nand speed range from 100 up to 200:\n', i)
+
+    cars_count, planes_count = vehicles_.get_cars_and_planes_quantity()
+    print('Number of cars: ', cars_count, '\nNumber of planes: ', planes_count)
