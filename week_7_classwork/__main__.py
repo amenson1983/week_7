@@ -58,7 +58,7 @@ class Vehicles:
                 max_ = i
         for i in self.vehicles_:
             if i.price == max_.price:
-                print(i)
+                print('The most expensive vehicle: ', i)
 
 
 
@@ -67,7 +67,7 @@ class Vehicles:
         for i in self.vehicles_:
             if i.price < min_.price:
                 min_ = i.price
-        return min_.price
+        return min_
 
     def get_price_less_after_vehicle(self, less_price=16000, after_year=2000):
         for i in self.vehicles_:
@@ -80,8 +80,21 @@ class Vehicles:
                 list_.append(i)
         return list_
 
-    def get_vehicles_less_with_aver_price_and_speed_in_range(self,age_year=5,start_speed=100, end_speed=200):
-        pass
+    def get_vehicles_less_with_aver_price_and_speed_in_range(self,age_year=5,start_speed=100, end_speed=200,list_=[]):
+        curr_year = 2020
+        summa_price = 0
+        count = 0
+        for vehicle in self.vehicles_:
+            summa_price += vehicle.price
+            count += 1
+        average_20_price = summa_price / count
+        start_price = average_20_price - (average_20_price*0.2)
+        end_price = average_20_price + (average_20_price * 0.2)
+        for vehicle in self.vehicles_:
+            if (curr_year - vehicle.year) <= age_year and start_speed<vehicle.speed<end_speed and start_price<vehicle.price<end_price:
+                list_.append(vehicle)
+        return list_
+
 
 
 class Test_Vehicle:
@@ -91,13 +104,13 @@ class Test_Vehicle:
              CShip(500000, 70, 2008, 'Odessa', 1050),
              CPlane(1000000, 960, 2020, 200, 10000),
              CCar(15000, 220, 2001),
-             CShip(600000, 80, 2019, 'Chernomorsk', 1200),
+             CShip(550000, 105, 2019, 'Chernomorsk', 1200),
              CPlane(800000, 780, 2015, 150, 10000),
              ]
         )
         min_price_exp = 10000
         min_price_act = vehicles.get_minprice_vehicle()
-        if min_price_exp == min_price_act:
+        if min_price_exp == min_price_act.price:
             print("Correct")
         else:
             print("Error")
@@ -108,7 +121,7 @@ class Test_Vehicle:
              CShip(500000, 70, 2008, 'Odessa', 1050),
              CPlane(1000000, 960, 2020, 200, 10000),
              CCar(15000, 220, 2001),
-             CShip(600000, 80, 2019, 'Chernomorsk', 1200),
+             CShip(550000, 105, 2019, 'Chernomorsk', 1200),
              CPlane(800000, 780, 2015, 150, 10000),
              ]
         )
@@ -127,20 +140,26 @@ if __name__ == '__main__':
     ship1 = CShip(500000, 70, 2008, 'Odessa', 1050)
     plane1 = CPlane(1000000, 960, 2020, 200, 10000)
     car2 = CCar(15000, 220, 2001)
-    ship2 = CShip(600000, 80, 2019, 'Chernomorsk', 1200)
+    ship2 = CShip(550000, 105, 2019, 'Chernomorsk', 1200)
     plane2 = CPlane(800000, 780, 2015, 150, 10000)
 
     vehicles = [car1,ship1,plane1,car2,ship2,plane2]
     vehicles_ = Vehicles(vehicles)
 
+    vehicles_.print_maxprice_vehicle()
+
     min_ = vehicles_.get_minprice_vehicle()
-    print(min_)
+    print('Vehicle with lowest price: ', min_)
     Test_Vehicle().test_get_minprice_vehicle()
 
-    vehicles_.print_maxprice_vehicle()
     vehs_ = vehicles_.get_price_less_after_vehicle()
+    print('Vehicle with a price less than 16 000 and younger than year 2000: ', vehs_)
     Test_Vehicle().test_price_less_after_vehicle()
-    print(vehs_)
 
     list_range = vehicles_.get_vehicles_in_range()
-    print(list_range)
+    for i in list_range:
+        print('Vehicle with manufacturing date in range from 2000 up to 2010: ', i)
+
+    list_range_year_speed = vehicles_.get_vehicles_less_with_aver_price_and_speed_in_range()
+    for i in list_range_year_speed:
+        print('Vehicles younger than 5 years, \nin price range +-20% from average \nand speed range from 100 up to 200:\n', i)
