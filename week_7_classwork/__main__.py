@@ -116,6 +116,15 @@ class Vehicles:
                 lowest.append(i)
         return lowest
 
+    def get_ships_from_2000_to_2020(self, ships=[], ships_in_range=[]):
+        for vehicle in self.vehicles_:
+            if isinstance(vehicle,CShip):
+               ships.append(vehicle)
+        for i in ships:
+            if 2000 < i.year < 2020:
+                ships_in_range.append(i)
+        return ships_in_range
+
 class Test_Vehicle:
     def test_get_minprice_vehicle(self):
         vehicles = Vehicles(
@@ -189,3 +198,7 @@ if __name__ == '__main__':
     lowestpricecar = vehicles_.get_car_by_lowest_price()
     for i in lowestpricecar:
         print('A Car with a lowest price: ' , i)
+
+    ships_in_range = vehicles_.get_ships_from_2000_to_2020()
+    for i in ships_in_range:
+        print('Ships from 2000 to 2020 manufacturing year: ', i)
