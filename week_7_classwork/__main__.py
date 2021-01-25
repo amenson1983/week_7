@@ -105,7 +105,16 @@ class Vehicles:
                 planes_count += 1
         return cars_count, planes_count
 
-
+    def get_car_by_lowest_price(self, cars=[], lowest=[]):
+        cars_price_min = 500000
+        for vehicle in self.vehicles_:
+            if isinstance(vehicle,CCar):
+               cars.append(vehicle)
+        for i in cars:
+            if i.price <cars_price_min:
+                cars_price_min = i.price
+                lowest.append(i)
+        return lowest
 
 class Test_Vehicle:
     def test_get_minprice_vehicle(self):
@@ -176,3 +185,7 @@ if __name__ == '__main__':
 
     cars_count, planes_count = vehicles_.get_cars_and_planes_quantity()
     print('Number of cars: ', cars_count, '\nNumber of planes: ', planes_count)
+
+    lowestpricecar = vehicles_.get_car_by_lowest_price()
+    for i in lowestpricecar:
+        print('A Car with a lowest price: ' , i)
