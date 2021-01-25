@@ -69,11 +69,10 @@ class Vehicles:
                 min_ = i.price
         return min_.price
 
-    def get_price_less_after_vehicle(self, less_price=16000, after_year=1999,min_ = []):
+    def get_price_less_after_vehicle(self, less_price=16000, after_year=2000):
         for i in self.vehicles_:
-            if i.price < less_price and i.year > after_year:
-                min_.append(i)
-        return min_
+            if i.price < less_price and i.year >= after_year:
+                return i
 
     def get_vehicles_in_range(self, start_year=2000, end_year=2010):
         pass
@@ -100,13 +99,31 @@ class Test_Vehicle:
         else:
             print("Error")
 
+    def test_price_less_after_vehicle(self):
+        vehicles = Vehicles(
+            [CCar(10000, 150, 1995),
+             CShip(500000, 70, 2008, 'Odessa', 1050),
+             CPlane(1000000, 960, 2020, 200, 10000),
+             CCar(15000, 220, 2001),
+             CShip(600000, 80, 2019, 'Chernomorsk', 1200),
+             CPlane(800000, 780, 2015, 150, 10000),
+             ]
+        )
+        year_exp = 2001
+        price_exp = 15000
+        veh_ = vehicles.get_price_less_after_vehicle()
+        if price_exp == veh_.price and year_exp == veh_.year:
+            print("Correct")
+        else:
+            print("Error")
+
 
 if __name__ == '__main__':
 
     car1 = CCar(10000, 150, 1995)
     ship1 = CShip(500000, 70, 2008, 'Odessa', 1050)
     plane1 = CPlane(1000000, 960, 2020, 200, 10000)
-    car2 = CCar(15000, 220, 2000)
+    car2 = CCar(15000, 220, 2001)
     ship2 = CShip(600000, 80, 2019, 'Chernomorsk', 1200)
     plane2 = CPlane(800000, 780, 2015, 150, 10000)
 
@@ -119,4 +136,6 @@ if __name__ == '__main__':
 
     vehicles_.print_maxprice_vehicle()
     vehs_ = vehicles_.get_price_less_after_vehicle()
+    Test_Vehicle().test_price_less_after_vehicle()
     print(vehs_)
+
