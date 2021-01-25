@@ -52,7 +52,15 @@ class Vehicles:
         self.vehicles_ = vehicles_
 
     def print_maxprice_vehicle(self):
-        pass
+        max_ = self.vehicles_[0]
+        for i in self.vehicles_:
+            if i.price > max_.price:
+                max_ = i
+        for i in self.vehicles_:
+            if i.price == max_.price:
+                print(i)
+
+
 
     def get_minprice_vehicle(self):
         min_ = self.vehicles_[0]
@@ -104,3 +112,4 @@ if __name__ == '__main__':
     min_ = vehicles_.get_minprice_vehicle()
     print(min_)
     Test_Vehicle().test_get_minprice_vehicle()
+    vehicles_.print_maxprice_vehicle()
