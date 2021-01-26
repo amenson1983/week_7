@@ -45,3 +45,5 @@ class Products:
 
     def __str__(self):
         return f'Product description: {self.description} \nProduct price: {self.price} \nProduct`s discount: {self.discount} \nQuantity: {self.quantity}'
+    def __repr__(self):
+        return f'{self.description},{self.price},{self.discount},{self.quantity}'

@@ -2,7 +2,7 @@ import logging
 
 from week_7_homework_2_part.class_Person import Person_1
 
-logging.basicConfig(filename='person.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.basicConfig(filename='shop.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 class Customer(Person_1):
     def __init__(self,name,adress,phone,id,inlist):
