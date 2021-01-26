@@ -1,5 +1,5 @@
-from week_7_classwork.CShip import CShip
-from week_7_classwork.vehicle_class import CVehicle
+from week_7_homework_1_part.CShip import CShip
+from week_7_homework_1_part.vehicle_class import CVehicle
 
 
 class CPlane(CShip):
