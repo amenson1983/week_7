@@ -1,7 +1,7 @@
 from week_7_homework_2_part.class_Employee import Employee
 import logging
 
-logging.basicConfig(filename='production_worker.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.basicConfig(filename='employee.log', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 class ProductWorkerException(Exception):
     def __init__(self, str_err):
         Exception.__init__(self,str_err)
