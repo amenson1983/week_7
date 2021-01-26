@@ -22,7 +22,6 @@ class Shop:
     cost = 0
     for product in self.shopping_list:
       cost += ((product.price-(product.price*product.discount))*product.quantity)
-      logging.info("Adding product cost to total cost: " + str(product))
     return cost
 
   def attach_products_to_customer(self,customer):
@@ -36,7 +35,7 @@ class Shop:
     for i in self.shopping_list:
       print('*************************************')
       print(i)
-      logging.info("Printing products...")
+      logging.info("Printing product..." + str(i.description))
     print('*************************************')
     print('*************************************')
     print('Total cost with discount: ', self.get_total_cost_with_discount())
