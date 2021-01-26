@@ -16,5 +16,6 @@ if __name__ == '__main__':
         Customer('Turchyna Daxi', 'Zhitomir, Zamkova, 1, fl.4', 989922947, 999, False)
     ])
     x = list.get_min_id()
-    list.print_refuses()
-    #print(x)
+    #list.print_refuses()
+    #list.print_agrees()
+    print(x)

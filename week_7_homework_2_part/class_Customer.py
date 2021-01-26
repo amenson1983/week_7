@@ -56,5 +56,9 @@ class CustomersWorkout:
                 print('____________________')
                 print(customer)
 
-
+    def print_agrees(self):
+        for customer in self.customers_list:
+            if customer.inlist == True:
+                print('____________________')
+                print(customer)
 
